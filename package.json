@@ -1,0 +1,10 @@
+{
+  "name": "s-saravanan-engineering-works",
+  "version": "1.0.0",
+  "description": "Professional website for S. Saravanan Engineering Works - IBR Welding & Fabrication Contractors",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "preview": "npx serve . -l 3000"
+  }
+}
