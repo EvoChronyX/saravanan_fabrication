@@ -142,17 +142,47 @@
         </div>
       </div>
 
-      <div class="about-highlight" data-animate="fade-up">
-        <div class="about-highlight-content">
-          <div class="about-highlight-icon">
-            <i class="fas fa-quote-left"></i>
+      <!-- Proprietor Profile Section -->
+      <div class="proprietor-section" data-animate="fade-up">
+        <div class="proprietor-photo-wrapper">
+          <div class="proprietor-photo">
+            <!-- Replace src with actual owner photo: e.g. "images/saravanan.jpg" -->
+            <img src="images/profile_picture1.png" alt="Saravanan S - Proprietor" id="ownerPhoto" />
+            <div class="proprietor-photo-badge">
+              <i class="fas fa-certificate"></i>
+              <span>IBR Certified</span>
+            </div>
           </div>
-          <blockquote>
-            &ldquo;Quality welding is not just about joining metals — it&rsquo;s about building infrastructure that people depend on every day. Every joint we make carries our reputation.&rdquo;
-          </blockquote>
-          <div class="about-highlight-author">
-            <strong>Saravanan S</strong>
-            <span>Proprietor &amp; Lead IBR Welder</span>
+          <div class="proprietor-experience">
+            <span class="proprietor-exp-num">25+</span>
+            <span class="proprietor-exp-label">Years of<br />Experience</span>
+          </div>
+        </div>
+
+        <div class="proprietor-info">
+          <div class="proprietor-name-block">
+            <h3>Saravanan S</h3>
+            <span class="proprietor-role">Proprietor &amp; Lead IBR Welder</span>
+          </div>
+          <div class="proprietor-quote">
+            <i class="fas fa-quote-left"></i>
+            <blockquote>
+              &ldquo;Quality welding is not just about joining metals — it&rsquo;s about building infrastructure that people depend on every day. Every joint we make carries our reputation.&rdquo;
+            </blockquote>
+          </div>
+          <div class="proprietor-credentials">
+            <div class="credential-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Indian Boiler Regulation (IBR) Certified</span>
+            </div>
+            <div class="credential-item">
+              <i class="fas fa-check-circle"></i>
+              <span>100+ Projects Successfully Delivered</span>
+            </div>
+            <div class="credential-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Trusted by Leading Industrial Groups</span>
+            </div>
           </div>
         </div>
       </div>
@@ -401,14 +431,14 @@
             <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
             <div>
               <h4>Phone</h4>
-              <p><a href="tel:+91XXXXXXXXXX">Contact Us</a></p>
+              <p><a href="tel:+919715180050">+91 97151 80050</a></p>
             </div>
           </div>
           <div class="contact-info-card">
             <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <h4>Email</h4>
-              <p><a href="mailto:info@ssaravananworks.com">info@ssaravananworks.com</a></p>
+              <p><a href="mailto:saravanansubramni@gmail.com">saravanansubramni@gmail.com</a></p>
             </div>
           </div>
           <div class="contact-info-card">
@@ -420,7 +450,15 @@
           </div>
         </div>
 
-        <form class="contact-form" id="contactForm" data-animate="fade-up" data-delay="200">
+        <form class="contact-form" id="contactForm" data-animate="fade-up" data-delay="200" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Access Key — get yours free at https://web3forms.com -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New Enquiry — S. Saravanan Engineering Works" />
+          <input type="hidden" name="from_name" value="Website Enquiry" />
+          <input type="hidden" name="replyto" id="replyto" />
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="Your full name" required />

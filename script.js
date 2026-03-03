@@ -162,26 +162,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---- Contact Form ----
+  // ---- Contact Form (Web3Forms) ----
   const contactForm = document.getElementById('contactForm');
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const btn = contactForm.querySelector('button[type="submit"]');
     const originalContent = btn.innerHTML;
 
-    // Show success state
-    btn.innerHTML = '<span>Enquiry Sent!</span><i class="fas fa-check"></i>';
-    btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+    // Sync reply-to with email field
+    const emailInput = contactForm.querySelector('#email');
+    const replyTo = contactForm.querySelector('#replyto');
+    if (emailInput && replyTo) {
+      replyTo.value = emailInput.value;
+    }
+
+    // Show loading state
+    btn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
     btn.disabled = true;
+
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        btn.innerHTML = '<span>Enquiry Sent!</span><i class="fas fa-check"></i>';
+        btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+        contactForm.reset();
+      } else {
+        btn.innerHTML = '<span>Failed — Try Again</span><i class="fas fa-exclamation-triangle"></i>';
+        btn.style.background = 'linear-gradient(135deg, #dc2626, #ef4444)';
+      }
+    } catch (error) {
+      btn.innerHTML = '<span>Network Error</span><i class="fas fa-exclamation-triangle"></i>';
+      btn.style.background = 'linear-gradient(135deg, #dc2626, #ef4444)';
+    }
 
     setTimeout(() => {
       btn.innerHTML = originalContent;
       btn.style.background = '';
       btn.disabled = false;
-      contactForm.reset();
-    }, 3000);
+    }, 3500);
   });
 
   // ---- Footer Year ----
